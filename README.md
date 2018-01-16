@@ -4,10 +4,18 @@ Un sitio para guardar paginas
 - html
 - css
 - javascript
-##  ##
+## extra ##
 
+- gridlayout[Maquetacion-css] 
+- stylus[preprocesador]
+- Bootstrap [Stylo de compentes]
 
+- AngularJS or vuejs [programación]
+- jquery [front cliente]
+- jquery-ui [front cliente]
 
+- Page.js or AngularJS or vuejs [url amigables]
+- sql.js or alasql [base de datos]
 
 personalizar:
 
