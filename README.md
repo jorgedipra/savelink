@@ -8,13 +8,13 @@ Un sitio para guardar paginas
 
 - gridlayout[Maquetacion-css] 
 - stylus[preprocesador]
-- Bootstrap [Stylo de compentes]
+- Bootstrap or bootstrap-vue [Stylo de compentes] 
 
-- AngularJS or vuejs [programación]
+- vuejs [programación]
 - jquery [front cliente]
 - jquery-ui [front cliente]
 
-- Page.js or AngularJS or vuejs [url amigables]
+- Page.js or vuejs [url amigables / Routing]
 - sql.js or alasql [base de datos]
 
 personalizar:
