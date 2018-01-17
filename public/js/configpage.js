@@ -2,13 +2,8 @@
 
 page('/savelink/', () =>  {
 	console.error('Page not found');
-	document.all.iframe.src = "public/my-component.vue"; 
+	document.all.iframe.src = "public/index.html"; 
 });
-page('/', () =>  {
-	console.error('Page not found');
-	document.all.iframe.src = "public/my-component.vue"; 
-});
-
 page('*', notfound);
 
 page();

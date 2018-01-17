@@ -9,8 +9,19 @@
 </head>
 <body>
 	<div id="body"></div>
+	<main>
+			{{ hola }}
+	</main>
 	<iframe id="iframe" src="#"></iframe>
 	<script src="public/js/vue.js" type="text/javascript"></script>
 	<script src="public/js/configpage.js" type="text/javascript"></script>
+	<script>
+		new Vue({
+			el: 'main',
+			data: {
+				hola: httpVueLoader('public/index.html')
+			}
+		});
+	</script>
 </body>
 </html>
