@@ -1,6 +1,13 @@
-#BD::link
+#BD::SaveLink
 #@jorgedipra
 #	
+#usuario
+@TABLE->User
+	id=>int() AUTOINCREMENT PRIMARYKEY
+	user=>varchar(20) NOT NULL
+	pass=>varchar(50) NOT NULL
+@ENDTABLE->User
+
 #categoria de paginas[series,peliculas,anime]
 @TABLE->categorias
 	id=>int() AUTOINCREMENT PRIMARYKEY
@@ -18,11 +25,6 @@
 	id_categoria=>id() FORINKEY [categorias->id]
 @ENDTABLE->pagec
 
-#usuario
-@TABLE->User
-	id=>int() AUTOINCREMENT PRIMARYKEY
-	user=>varchar(20) NOT NULL
-	pass=>varchar(50) NOT NULL
-@ENDTABLE->User
+
 
 

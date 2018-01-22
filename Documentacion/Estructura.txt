@@ -18,3 +18,13 @@
 #public
     @css
     @js
+    @style
+#resources
+    @view->[html]
+#database
+    @migration
+    @seeds
+#routes
+    @web->[rutas web]
+#storage
+    @img{app->public}
