@@ -49,7 +49,7 @@ abstract class Facade
                     ? static::$resolvedInstance[$name]
                     : static::createFreshMockInstance();
 
-        return $mock->shouldReceive(...func_get_args());
+        return $mock->shouldReceive(func_get_args());
     }
 
     /**
