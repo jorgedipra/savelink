@@ -170,7 +170,7 @@ class Manager
      */
     public function __call($method, $parameters)
     {
-        return $this->manager->$method(...$parameters);
+        return $this->manager->$method($parameters);
     }
 
     /**
@@ -182,6 +182,6 @@ class Manager
      */
     public static function __callStatic($method, $parameters)
     {
-        return static::connection()->$method(...$parameters);
+        return static::connection()->$method($parameters);
     }
 }

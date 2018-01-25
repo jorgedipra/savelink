@@ -950,7 +950,7 @@ trait HasAttributes
      */
     public function isClean($attributes = null)
     {
-        return ! $this->isDirty(...func_get_args());
+        return ! $this->isDirty(func_get_args());
     }
 
     /**

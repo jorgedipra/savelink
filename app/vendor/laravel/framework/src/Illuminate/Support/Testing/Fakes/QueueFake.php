@@ -45,7 +45,7 @@ class QueueFake extends QueueManager implements Queue
                 return false;
             }
 
-            return $callback ? $callback(...func_get_args()) : true;
+            return $callback ? $callback(func_get_args()) : true;
         });
     }
 

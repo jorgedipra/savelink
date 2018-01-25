@@ -80,7 +80,7 @@ class Collection extends BaseCollection implements QueueableCollection
     public function contains($key, $operator = null, $value = null)
     {
         if (func_num_args() > 1 || $this->useAsCallable($key)) {
-            return parent::contains(...func_get_args());
+            return parent::contains(func_get_args());
         }
 
         if ($key instanceof Model) {
@@ -325,7 +325,7 @@ class Collection extends BaseCollection implements QueueableCollection
     /**
      * Zip the collection together with one or more arrays.
      *
-     * @param  mixed ...$items
+     * @param  mixed $items
      * @return \Illuminate\Support\Collection
      */
     public function zip($items)

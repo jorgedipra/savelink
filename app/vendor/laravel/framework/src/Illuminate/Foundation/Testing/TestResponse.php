@@ -652,6 +652,6 @@ class TestResponse
             return $this->macroCall($method, $args);
         }
 
-        return $this->baseResponse->{$method}(...$args);
+        return $this->baseResponse->{$method}($args);
     }
 }

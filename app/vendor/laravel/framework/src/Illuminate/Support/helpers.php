@@ -813,7 +813,7 @@ if (! function_exists('str_limit')) {
      * @param  string  $end
      * @return string
      */
-    function str_limit($value, $limit = 100, $end = '...')
+    function str_limit($value, $limit = 100, $end = '')
     {
         return Str::limit($value, $limit, $end);
     }

@@ -340,6 +340,6 @@ class FilesystemManager implements FactoryContract
      */
     public function __call($method, $parameters)
     {
-        return $this->disk()->$method(...$parameters);
+        return $this->disk()->$method($parameters);
     }
 }

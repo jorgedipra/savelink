@@ -69,7 +69,7 @@ abstract class Connection
      */
     public function command($method, array $parameters = [])
     {
-        return $this->client->{$method}(...$parameters);
+        return $this->client->{$method}($parameters);
     }
 
     /**

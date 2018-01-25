@@ -163,7 +163,7 @@ class RouteRegistrar
     public function __call($method, $parameters)
     {
         if (in_array($method, $this->passthru)) {
-            return $this->registerRoute($method, ...$parameters);
+            return $this->registerRoute($method, $parameters);
         }
 
         if (in_array($method, $this->allowedAttributes)) {

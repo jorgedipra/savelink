@@ -145,7 +145,7 @@ class Pipeline implements PipelineContract
                     $parameters = [$passable, $stack];
                 }
 
-                return $pipe->{$this->method}(...$parameters);
+                return $pipe->{$this->method}($parameters);
             };
         };
     }
