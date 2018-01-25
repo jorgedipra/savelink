@@ -32,12 +32,12 @@ LUA;
     public static function pop()
     {
         return <<<'LUA'
--- Pop the first job off of the queue
+-- Pop the first job off of the queue...
 local job = redis.call('lpop', KEYS[1])
 local reserved = false
 
 if(job ~= false) then
-    -- Increment the attempt count and place job on the reserved queue
+    -- Increment the attempt count and place job on the reserved queue...
     reserved = cjson.decode(job)
     reserved['attempts'] = reserved['attempts'] + 1
     reserved = cjson.encode(reserved)
@@ -61,10 +61,10 @@ LUA;
     public static function release()
     {
         return <<<'LUA'
--- Remove the job from the current queue
+-- Remove the job from the current queue...
 redis.call('zrem', KEYS[2], ARGV[1])
 
--- Add the job onto the "delayed" queue
+-- Add the job onto the "delayed" queue...
 redis.call('zadd', KEYS[1], ARGV[2], ARGV[1])
 
 return true
@@ -83,7 +83,7 @@ LUA;
     public static function migrateExpiredJobs()
     {
         return <<<'LUA'
--- Get all of the jobs with an expired "score"
+-- Get all of the jobs with an expired "score"...
 local val = redis.call('zrangebyscore', KEYS[1], '-inf', ARGV[1])
 
 -- If we have values in the array, we will remove them from the first queue

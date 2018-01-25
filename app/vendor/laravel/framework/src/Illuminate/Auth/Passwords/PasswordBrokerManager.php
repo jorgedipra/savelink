@@ -142,6 +142,6 @@ class PasswordBrokerManager implements FactoryContract
      */
     public function __call($method, $parameters)
     {
-        return $this->broker()->{$method}($parameters);
+        return $this->broker()->{$method}(...$parameters);
     }
 }

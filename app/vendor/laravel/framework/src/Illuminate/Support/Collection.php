@@ -232,13 +232,13 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     /**
      * Cross join with the given lists, returning all possible permutations.
      *
-     * @param  mixed  $lists
+     * @param  mixed  ...$lists
      * @return static
      */
-    public function crossJoin($lists)
+    public function crossJoin(...$lists)
     {
         return new static(Arr::crossJoin(
-            $this->items, array_map([$this, 'getArrayableItems'], $lists)
+            $this->items, ...array_map([$this, 'getArrayableItems'], $lists)
         ));
     }
 
@@ -301,7 +301,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     public function eachSpread(callable $callback)
     {
         return $this->each(function ($chunk) use ($callback) {
-            return $callback($chunk);
+            return $callback(...$chunk);
         });
     }
 
@@ -777,7 +777,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     public function mapSpread(callable $callback)
     {
         return $this->map(function ($chunk) use ($callback) {
-            return $callback($chunk);
+            return $callback(...$chunk);
         });
     }
 
@@ -1441,7 +1441,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
      * e.g. new Collection([1, 2, 3])->zip([4, 5, 6]);
      *      => [[1, 4], [2, 5], [3, 6]]
      *
-     * @param  mixed $items
+     * @param  mixed ...$items
      * @return static
      */
     public function zip($items)

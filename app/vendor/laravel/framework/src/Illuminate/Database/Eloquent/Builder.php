@@ -208,7 +208,7 @@ class Builder
 
             $this->query->addNestedWhereQuery($query->getQuery(), $boolean);
         } else {
-            $this->query->where(func_get_args());
+            $this->query->where(...func_get_args());
         }
 
         return $this;
@@ -931,7 +931,7 @@ class Builder
         $originalWhereCount = is_null($query->wheres)
                     ? 0 : count($query->wheres);
 
-        $result = $scope(array_values($parameters)) ?: $this;
+        $result = $scope(...array_values($parameters)) ?: $this;
 
         if (count((array) $query->wheres) > $originalWhereCount) {
             $this->addNewWheresWithinGroup($query, $originalWhereCount);
@@ -1232,7 +1232,7 @@ class Builder
         if (isset($this->localMacros[$method])) {
             array_unshift($parameters, $this);
 
-            return $this->localMacros[$method]($parameters);
+            return $this->localMacros[$method](...$parameters);
         }
 
         if (isset(static::$macros[$method]) and static::$macros[$method] instanceof Closure) {
@@ -1248,10 +1248,10 @@ class Builder
         }
 
         if (in_array($method, $this->passthru)) {
-            return $this->toBase()->{$method}($parameters);
+            return $this->toBase()->{$method}(...$parameters);
         }
 
-        $this->query->{$method}($parameters);
+        $this->query->{$method}(...$parameters);
 
         return $this;
     }

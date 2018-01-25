@@ -143,7 +143,7 @@ class Gate implements GateContract
         return function () use ($callback) {
             list($class, $method) = Str::parseCallback($callback);
 
-            return $this->resolvePolicy($class)->{$method}(func_get_args());
+            return $this->resolvePolicy($class)->{$method}(...func_get_args());
         };
     }
 
@@ -295,7 +295,7 @@ class Gate implements GateContract
     {
         $callback = $this->resolveAuthCallback($user, $ability, $arguments);
 
-        return $callback($user, $arguments);
+        return $callback($user, ...$arguments);
     }
 
     /**
@@ -311,7 +311,7 @@ class Gate implements GateContract
         $arguments = array_merge([$user, $ability], [$arguments]);
 
         foreach ($this->beforeCallbacks as $before) {
-            if (! is_null($result = $before($arguments))) {
+            if (! is_null($result = $before(...$arguments))) {
                 return $result;
             }
         }
@@ -331,7 +331,7 @@ class Gate implements GateContract
         $arguments = array_merge([$user, $ability, $result], [$arguments]);
 
         foreach ($this->afterCallbacks as $after) {
-            $after($arguments);
+            $after(...$arguments);
         }
     }
 
@@ -434,7 +434,7 @@ class Gate implements GateContract
             }
 
             return is_callable([$policy, $ability])
-                        ? $policy->{$ability}($user, $arguments)
+                        ? $policy->{$ability}($user, ...$arguments)
                         : false;
         };
     }
@@ -451,7 +451,7 @@ class Gate implements GateContract
     protected function callPolicyBefore($policy, $user, $ability, $arguments)
     {
         if (method_exists($policy, 'before')) {
-            return $policy->before($user, $ability, $arguments);
+            return $policy->before($user, $ability, ...$arguments);
         }
     }
 

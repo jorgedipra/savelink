@@ -505,7 +505,7 @@ class Repository implements CacheContract, ArrayAccess
             return $this->macroCall($method, $parameters);
         }
 
-        return $this->store->$method($parameters);
+        return $this->store->$method(...$parameters);
     }
 
     /**

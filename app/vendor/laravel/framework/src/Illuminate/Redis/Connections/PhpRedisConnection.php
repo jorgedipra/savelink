@@ -97,7 +97,7 @@ class PhpRedisConnection extends Connection
      * @param  mixed  $dictionary
      * @return int
      */
-    public function zadd($key, $dictionary)
+    public function zadd($key, ...$dictionary)
     {
         if (count($dictionary) === 1) {
             $_dictionary = [];
@@ -110,7 +110,7 @@ class PhpRedisConnection extends Connection
             $dictionary = $_dictionary;
         }
 
-        return $this->client->zadd($key, $dictionary);
+        return $this->client->zadd($key, ...$dictionary);
     }
 
     /**
@@ -151,7 +151,7 @@ class PhpRedisConnection extends Connection
      * @param  mixed  $arguments
      * @return mixed
      */
-    public function evalsha($script, $numkeys, $arguments)
+    public function evalsha($script, $numkeys, ...$arguments)
     {
         return $this->command('evalsha', [
             $this->script('load', $script), $arguments, $numkeys,

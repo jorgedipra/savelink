@@ -64,10 +64,10 @@ class Arr
     /**
      * Cross join the given arrays, returning all possible permutations.
      *
-     * @param  array  $arrays
+     * @param  array  ...$arrays
      * @return array
      */
-    public static function crossJoin($arrays)
+    public static function crossJoin(...$arrays)
     {
         $results = [[]];
 
