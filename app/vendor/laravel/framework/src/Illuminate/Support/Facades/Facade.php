@@ -46,8 +46,8 @@ abstract class Facade
         $name = static::getFacadeAccessor();
 
         $mock = static::isMock()
-                    ? static::$resolvedInstance[$name]
-                    : static::createFreshMockInstance();
+        ? static::$resolvedInstance[$name]
+        : static::createFreshMockInstance();
 
         return $mock->shouldReceive(func_get_args());
     }
@@ -88,7 +88,7 @@ abstract class Facade
         $name = static::getFacadeAccessor();
 
         return isset(static::$resolvedInstance[$name]) &&
-               static::$resolvedInstance[$name] instanceof MockInterface;
+        static::$resolvedInstance[$name] instanceof MockInterface;
     }
 
     /**
@@ -210,14 +210,13 @@ abstract class Facade
      *
      * @throws \RuntimeException
      */
-    public static function __callStatic($method, $args)
+    public static function __callStatic($method,$args)
     {
         $instance = static::getFacadeRoot();
 
         if (! $instance) {
             throw new RuntimeException('A facade root has not been set.');
         }
-
-        return $instance->$method($args);
+        return $instance->$method(...$args);
     }
 }
